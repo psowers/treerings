@@ -15,7 +15,7 @@ Flat, column, format:
 import os, sys
 import Tkinter, Tkconstants, tkFileDialog
 
-__author__ = 'Paul Sowers <sower020@umn.edu>'
+__author__ = 'Paul Sowers <sowerspa@gmail.com>'
 
 
 class TkTreeRingDialog(Tkinter.Frame):
