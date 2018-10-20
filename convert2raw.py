@@ -18,7 +18,7 @@ if __name__ == '__main__':
         FilesIn = [os.path.abspath(arg) for arg in sys.argv[1:] if os.path.isfile(arg)]
         for arg in sys.argv[1:]:
             if not os.path.abspath(arg) in FilesIn:
-                print 'Argument not vaild: "%s"' % arg
+                print('Argument not vaild: "%s"' % arg)
     else:
         FilesIn = [promptfile()]
 

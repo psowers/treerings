@@ -89,7 +89,7 @@ class TkTreeRingDialog(Tkinter.Frame):
         filename_in = self.filename_in.get()
         filename_out = self.filename_out.get()
         if filename_in and filename_out:
-            # print filename_in, filename_out
+            # print(filename_in, filename_out)
             raw2flat(filename_in, filename_out)
             self.quit()
 
@@ -97,7 +97,7 @@ class TkTreeRingDialog(Tkinter.Frame):
         filename_in = self.filename_in.get()
         filename_out = self.filename_out.get()
         if filename_in and filename_out:
-            # print filename_in, filename_out
+            # print(filename_in, filename_out)
             flat2raw(filename_in, filename_out)
             self.quit()
 
@@ -116,10 +116,10 @@ def is_readable(filename):
     try:
         f = open(filename)
         f.close()
-        print 'File "%s" successfully opened.' % filename
+        print('File "%s" successfully opened.' % filename)
         return True
     except:
-        print 'File error: "%s"' % filename
+        print('File error: "%s"' % filename)
         return False
 
 
@@ -154,7 +154,7 @@ def unique_nm(filename):
 
 def raw2flat(file_in, file_out):
     """Reads the decadal input file and writes it to the system in a flat format text file."""
-    print 'Output:\t"%s"' % file_out
+    print('Output:\t"%s"' % file_out)
     output_file = open(file_out, 'a')
     for line in open(file_in, 'r'):
         if not len(line) >= 18:
@@ -182,7 +182,7 @@ def raw2flat(file_in, file_out):
 
 def flat2raw(file_in, file_out):
     """Reads the flat tree ring file and writes it to the system in raw data format (decadal) file."""
-    print 'Output:\t"%s"' % file_out
+    print('Output:\t"%s"' % file_out)
     output_file = open(file_out, 'a')
     _dec, _cID, _sID = 0, '', ''
     data = ''
@@ -229,16 +229,16 @@ if __name__ == '__main__':
         main.mainloop()
 
     elif sys.argv[1] in ['-h', '--help', '-help']:
-        print 'treerings.py -convert2flat file1 [file2...]'
-        print 'treerings.py -convert2raw file1 [file2...]'
-        print 'treerings.py (with no arguments, launches dialog)'
+        print('treerings.py -convert2flat file1 [file2...]')
+        print('treerings.py -convert2raw file1 [file2...]')
+        print('treerings.py (with no arguments, launches dialog)')
         sys.exit(__doc__)
 
     elif sys.argv[1] == '-convert2flat':
         FilesIn = [os.path.abspath(arg) for arg in sys.argv[2:] if os.path.isfile(arg)]
         for arg in sys.argv[2:]:
             if not os.path.abspath(arg) in FilesIn:
-                print 'Argument not vaild: "%s"' % arg
+                print('Argument not vaild: "%s"' % arg)
         for Fin in FilesIn:
             if is_readable(Fin):
                 Fout_nm = unique_nm(os.path.splitext(Fin)[0] + '.txt')
@@ -248,14 +248,14 @@ if __name__ == '__main__':
         FilesIn = [os.path.abspath(arg) for arg in sys.argv[2:] if os.path.isfile(arg)]
         for arg in sys.argv[2:]:
             if not os.path.abspath(arg) in FilesIn:
-                print 'Argument not vaild: "%s"' % arg
+                print('Argument not vaild: "%s"' % arg)
         for Fin in FilesIn:
             if is_readable(Fin):
                 Fout_nm = unique_nm(os.path.splitext(Fin)[0] + '.rwl')
                 flat2raw(Fin, Fout_nm)
 
     else:
-        print 'Invalid arguments. Launching dialog.'
+        print('Invalid arguments. Launching dialog.')
         main = Tkinter.Tk()
         app = TkTreeRingDialog(main)
         app.pack(expand=Tkconstants.TRUE, fill=Tkconstants.BOTH)
