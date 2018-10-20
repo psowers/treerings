@@ -30,4 +30,4 @@ Functions to convert files between decadal and flat formats.
 ### Who do I talk to? ###
 
 * Paul Sowers  
-    sowersp at gmail dot com
+    sowerspa@gmail.com
