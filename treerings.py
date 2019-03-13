@@ -12,47 +12,50 @@ Flat, column, format:
     Core ID   Year  Measurement  [Site ID]
     col 1-6   9-12      13-18      20-24
 """
-import os, sys
-import Tkinter, Tkconstants, tkFileDialog
+import os
+import sys
+
+import tkinter
 
 __author__ = 'Paul Sowers <sowerspa@gmail.com>'
 
 
-class TkTreeRingDialog(Tkinter.Frame):
+class TkTreeRingDialog(tkinter.Frame):
     def __init__(self, root):
-        Tkinter.Frame.__init__(self, root)
+        tkinter.Frame.__init__(self, root)
         root.title('Tree Ring Raw Data Flattner')
 
-        frame_opt = {'expand': Tkconstants.TRUE, 'fill': Tkconstants.X}
-        self.frmInput = Tkinter.Frame(self)
-        self.frmOutput = Tkinter.Frame(self)
-        self.frmExecute = Tkinter.Frame(self)
+        frame_opt = {'expand': tkinter.constants.TRUE, 'fill': tkinter.constants.X}
+        self.frmInput = tkinter.Frame(self)
+        self.frmOutput = tkinter.Frame(self)
+        self.frmExecute = tkinter.Frame(self)
         self.frmInput.pack(**frame_opt)
         self.frmOutput.pack(**frame_opt)
-        self.frmExecute.pack(expand=Tkconstants.TRUE, fill=Tkconstants.BOTH)
+        self.frmExecute.pack(expand=tkinter.constants.TRUE, fill=tkinter.constants.BOTH)
 
         # define filename variables
-        self.filename_in = Tkinter.StringVar()
-        self.filename_out = Tkinter.StringVar()
+        self.filename_in = tkinter.StringVar()
+        self.filename_out = tkinter.StringVar()
 
         # pack options
-        button_opt = {'fill': Tkconstants.BOTH, 'padx': 5, 'pady': 5, 'side': Tkconstants.LEFT}
-        entry_opt = {'expand': Tkconstants.TRUE, 'fill': Tkconstants.X, 'padx': 5, 'pady': 5, 'side': Tkconstants.LEFT}
+        button_opt = {'fill': tkinter.constants.BOTH, 'padx': 5, 'pady': 5, 'side': tkinter.constants.LEFT}
+        entry_opt = {'expand': tkinter.constants.TRUE, 'fill': tkinter.constants.X,
+                     'padx': 5, 'pady': 5, 'side': tkinter.constants.LEFT}
 
         # define buttons and entry boxes
         self.label_opt = options = {}
         options['width'] = 25
         options['state'] = 'readonly'
-        self.lblIn = Tkinter.Entry(self.frmInput, text='Input Filename', textvariable=self.filename_in,
+        self.lblIn = tkinter.Entry(self.frmInput, text='Input Filename', textvariable=self.filename_in,
                                    **self.label_opt)
         self.lblIn.pack(**entry_opt)
-        Tkinter.Button(self.frmInput, text='Input', command=self.ask_inputfilename, width=8).pack(**button_opt)
-        self.lblOut = Tkinter.Entry(self.frmOutput, text='Output Filename', textvariable=self.filename_out,
+        tkinter.Button(self.frmInput, text='Input', command=self.ask_inputfilename, width=8).pack(**button_opt)
+        self.lblOut = tkinter.Entry(self.frmOutput, text='Output Filename', textvariable=self.filename_out,
                                     **self.label_opt)
         self.lblOut.pack(**entry_opt)
-        Tkinter.Button(self.frmOutput, text='Output', command=self.ask_outputfilename, width=8).pack(**button_opt)
-        Tkinter.Button(self.frmExecute, text='Convert to Flat', command=self.convert2flat, width=25).pack(**button_opt)
-        Tkinter.Button(self.frmExecute, text='Convert to Raw Decadal', command=self.convert2raw, width=25).pack(
+        tkinter.Button(self.frmOutput, text='Output', command=self.ask_outputfilename, width=8).pack(**button_opt)
+        tkinter.Button(self.frmExecute, text='Convert to Flat', command=self.convert2flat, width=25).pack(**button_opt)
+        tkinter.Button(self.frmExecute, text='Convert to Raw Decadal', command=self.convert2raw, width=25).pack(
             **button_opt)
 
         # define options for opening or saving a file
@@ -67,10 +70,10 @@ class TkTreeRingDialog(Tkinter.Frame):
         # get filename
         options = self.file_opt.copy()
         options['title'] = 'Input Filename ...'
-        self.filename_in.set(tkFileDialog.askopenfilename(**options))
-        self.lblIn.config(state=Tkconstants.NORMAL)
-        self.lblIn.delete(0, Tkconstants.END)
-        self.lblIn.insert(Tkconstants.END, self.filename_in.get())
+        self.filename_in.set(tkinter.filedialog.askopenfilename(**options))
+        self.lblIn.config(state=tkinter.constants.NORMAL)
+        self.lblIn.delete(0, tkinter.constants.END)
+        self.lblIn.insert(tkinter.constants.END, self.filename_in.get())
         self.lblIn.config(state='readonly')
         self.lblIn.xview_moveto(1.0)
 
@@ -78,10 +81,10 @@ class TkTreeRingDialog(Tkinter.Frame):
         # get filename
         options = self.file_opt.copy()
         options['title'] = 'Output Filename ...'
-        self.filename_out.set(tkFileDialog.asksaveasfilename(**options))
-        self.lblOut.config(state=Tkconstants.NORMAL)
-        self.lblOut.delete(0, Tkconstants.END)
-        self.lblOut.insert(Tkconstants.END, self.filename_out.get())
+        self.filename_out.set(tkinter.filedialog.asksaveasfilename(**options))
+        self.lblOut.config(state=tkinter.constants.NORMAL)
+        self.lblOut.delete(0, tkinter.constants.END)
+        self.lblOut.insert(tkinter.constants.END, self.filename_out.get())
         self.lblOut.config(state='readonly')
         self.lblOut.xview_moveto(1.0)
 
@@ -104,7 +107,7 @@ class TkTreeRingDialog(Tkinter.Frame):
 
 def promptfile():
     """Prompts user for input file path, returns when user input mathes a file."""
-    f = raw_input('Enter the input file name and path:\n')
+    f = input('Enter the input file name and path:\n')
     if os.path.isfile(f):
         return f
     else:
@@ -118,7 +121,7 @@ def is_readable(filename):
         f.close()
         print('File "%s" successfully opened.' % filename)
         return True
-    except:
+    except IOError:
         print('File error: "%s"' % filename)
         return False
 
@@ -223,9 +226,9 @@ def flat2raw(file_in, file_out):
 if __name__ == '__main__':
 
     if len(sys.argv) == 1:
-        main = Tkinter.Tk()
+        main = tkinter.Tk()
         app = TkTreeRingDialog(main)
-        app.pack(expand=Tkconstants.TRUE, fill=Tkconstants.BOTH)
+        app.pack(expand=tkinter.constants.TRUE, fill=tkinter.constants.BOTH)
         main.mainloop()
 
     elif sys.argv[1] in ['-h', '--help', '-help']:
@@ -256,7 +259,7 @@ if __name__ == '__main__':
 
     else:
         print('Invalid arguments. Launching dialog.')
-        main = Tkinter.Tk()
+        main = tkinter.Tk()
         app = TkTreeRingDialog(main)
-        app.pack(expand=Tkconstants.TRUE, fill=Tkconstants.BOTH)
+        app.pack(expand=tkinter.constants.TRUE, fill=tkinter.constants.BOTH)
         main.mainloop()
