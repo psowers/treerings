@@ -16,6 +16,7 @@ import os
 import sys
 
 import tkinter
+from tkinter import filedialog
 
 __author__ = 'Paul Sowers <sowerspa@gmail.com>'
 
@@ -70,7 +71,7 @@ class TkTreeRingDialog(tkinter.Frame):
         # get filename
         options = self.file_opt.copy()
         options['title'] = 'Input Filename ...'
-        self.filename_in.set(tkinter.filedialog.askopenfilename(**options))
+        self.filename_in.set(filedialog.askopenfilename(**options))
         self.lblIn.config(state=tkinter.constants.NORMAL)
         self.lblIn.delete(0, tkinter.constants.END)
         self.lblIn.insert(tkinter.constants.END, self.filename_in.get())
@@ -81,7 +82,7 @@ class TkTreeRingDialog(tkinter.Frame):
         # get filename
         options = self.file_opt.copy()
         options['title'] = 'Output Filename ...'
-        self.filename_out.set(tkinter.filedialog.asksaveasfilename(**options))
+        self.filename_out.set(filedialog.asksaveasfilename(**options))
         self.lblOut.config(state=tkinter.constants.NORMAL)
         self.lblOut.delete(0, tkinter.constants.END)
         self.lblOut.insert(tkinter.constants.END, self.filename_out.get())
