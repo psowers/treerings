@@ -1,6 +1,6 @@
 
 # TREERINGS
-Convert dendrochonology data files between flat and decadal formats.
+Convert dendrochronology data files between flat and decadal formats.
 Functions to convert files between decadal and flat formats.
 
 * Version 1.0
@@ -25,9 +25,3 @@ Functions to convert files between decadal and flat formats.
 * convert2raw.py and convert2flat.py are one-way conversion scripts for easy command-line interaction.
 * Dependencies:
     Tkinter
-
-
-### Who do I talk to? ###
-
-* Paul Sowers  
-    sowerspa@gmail.com

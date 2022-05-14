@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "dendrochron-fmt"
+version = "0.1.0"
+description = "Convert dendrochronology data files between flat and decadal formats."
+license = "GNU GPLv3"
+readme = "README.md"
+repository = "https://github.com/psowers/treerings"
+keywords = ["tree rings", "dendrochronology"]
+authors = ["Paul Sowers <19436803+psowers@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
