@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dendrochron-fmt"
-version = "0.1.0"
+version = "0.2.0"
 description = "Convert dendrochronology data files between flat and decadal formats."
 license = "GNU GPLv3"
 readme = "README.md"
