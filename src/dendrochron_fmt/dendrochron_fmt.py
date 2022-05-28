@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
-Functions to convert files between decadal and flat formats.
+Convert tree ring data files between decadal and flat formats.
 
 Decadal, raw data, format:
     Core ID  Decade  Measurement(s)  [Site ID]
