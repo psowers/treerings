@@ -1,6 +1,5 @@
-
 # TREERINGS
-Convert dendrochronology data files between flat and decadal formats.
+Convert dendrochronology Tucson format raw data files between flat and decadal formats.
 Functions to convert files between decadal and flat formats.
 
 * Version 1.0
@@ -19,9 +18,3 @@ Functions to convert files between decadal and flat formats.
 >     Core ID   Year  Measurement  [Site ID]  
 >     col 1-6   9-12      13-18      20-24  
 
-### Description ###
-
-* treerings.py and treerings.pyw contain the working code.
-* convert2raw.py and convert2flat.py are one-way conversion scripts for easy command-line interaction.
-* Dependencies:
-    Tkinter

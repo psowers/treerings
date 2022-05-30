@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "dendrochron-fmt"
+name = "TRiDaT"
 version = "0.2.0"
-description = "Convert dendrochronology data files between flat and decadal formats."
+description = "Convert dendrochronology Tucson format raw data files between flat and decadal formats."
 license = "GNU GPLv3"
 readme = "README.md"
 repository = "https://github.com/psowers/treerings"
-keywords = ["tree rings", "dendrochronology"]
+keywords = ["tree rings", "dendrochronology", "Tucson format", "RWL"]
 authors = ["Paul Sowers <19436803+psowers@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
