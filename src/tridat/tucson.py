@@ -1,4 +1,4 @@
-from treerings import TreeRingSeries 
+from tridat.treerings import TreeRingSeries 
 
 def read_rwl(filepath):
     """Read a raw decadal file into a list of TreeRingSeries."""
